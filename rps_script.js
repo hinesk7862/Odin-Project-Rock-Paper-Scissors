@@ -84,6 +84,35 @@ function playRound(playerChoice, computerChoice){
     }
 }
 
-for(let i = 0; i < 10; i++){
-    console.log(playRound(getPlayerChoice(),getComputerChoice()));
+function game(){
+    let playerWinCount = 0;
+    let computerWinCount = 0;
+
+    let outcome = 0;
+
+    for(let i = 0; i < 5; i++){
+        outcome = playRound(getPlayerChoice(), getComputerChoice());
+        if(outcome == winCondtions.PLAYER){
+            console.log("The Player won this round");
+            playerWinCount++;
+        }
+        else if(outcome == winCondtions.COMPUTER){
+            console.log("The computer won this round");
+            computerWinCount++;
+        }
+        else{
+            console.log("This round was a tie");
+        }
+    }
+    if(playerWinCount >= 3){
+        console.log("The player has won the game by reaching a score of three!");
+    }
+    else if(computerWinCount >= 3){
+        console.log("The computer has won the game by reaching a score of three!");
+    }   
+    else{
+        console.log("Nobody won!");
+    }
 }
+
+game();
